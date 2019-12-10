@@ -2,7 +2,7 @@
 
 # Table Attributes（表格属性）
 
-属性  |  说明  |  类型  |  默认值
+属性  |  说明  |  类型  |  默认值
 :----------: | -------  |  :-------:  |  :-------:
 datas  |  表格数据  |  array  |  -
 record-table-select  | 是否记录表格的选项id(必须保证行ID存在，且唯一) 默认为false （用于我表格每页选中项进行保存，切换分页，不会导致之前页勾选的选项消失）注意：只有每页不超过1000条数据，才有效。  |  boolean  |  false
@@ -29,7 +29,7 @@ span-method | 合并行或列的计算方法 | Function | —
 tooltip-effect | tooltip effect 属性 / 可选值： dark/light | String | dark
 tooltip-placement | Tooltip 的出现位置 (注意：此属性必须开useVirtual才生效， 不开启useVirtual，就是默认为top,不可配置) / 可选值: 自己查看element的Tooltip组件的placement属性 | String | top
 total-option | 需要合计的选项（需要开启showSummary：true） （注意：当写了自定义合计方法（summary-method），此属性不在生效） |   totalOption格式如下 = [{ label: '金额', // 需要合计的表头名 unit: '元' // 合计出来的单位名 }] | []
-summary-method | 自定义的合计计算方法，（注意：当写了自定义合计方法，total-option属性不在生效） |	Function({ columns, data })	| —
+summary-method | 自定义的合计计算方法，（注意：当写了自定义合计方法，total-option属性不在生效） | Function({ columns, data })	| —
 addfence | 是否需要在表格尾部添加一行计算表格围栏。（比如你觉得合计一行不够，你还需要求平均值，或者其他）默认为帮你求平均值 | 如果你要自定义 请看fenceMethod属性 | Boolean | false
 fence-method | 自定义新添加计算围栏的计算方法（类似自定义合计算方法一样）| Function({ columns, data }) | -
 big-data-checkbox | 大量数据时候（至少数据量大于3000条每页），表格存在selection选择列表时，是否开启解决全选卡顿（缓慢）问题，开启此项可能影响table-column的selectable属性功能，最好不要使用selectable | Boolean | false
@@ -41,25 +41,25 @@ row-style | 行的 style 的回调方法 | Function({row, rowIndex})/Object | -
 cell-class-name | 行单元格的 className 的回调方法，也可以使用字符串为所有单元格设置一个固定的 className | Function({row, column, rowIndex, columnIndex})/String | -
 cell-style | 行单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有单元格设置一样的 Style。 | Function({row, column, rowIndex, columnIndex})/Object | -
 header-row-class-name | 表头行的 className 的回调方法，也可以使用字符串为所有表头行设置一个固定的 className | Function({row, rowIndex})/String | -
-header-row-style | 表头行的 style 的回调方法，也可以使用一个固定的 Object 为所有表头行设置一样的 Style。|	Function({row, rowIndex})/Object |	—
-header-cell-class-name | 表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。	Function({row, column, rowIndex, columnIndex})/String	|	—
-header-cell-style	| 表头单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有表头单元格设置一样的 Style。	Function({row, column, rowIndex, columnIndex})/Object |	—
-thtd-beyond-hiding | 开启头部th, 表体td超出隐藏  注意: 此属性必须是在use-virtual开启情况下才有效| Boolean	|	true
-default-sort | 默认的排序列的 prop 和顺序。它的prop属性指定默认的排序的列，order指定默认排序的顺序 | Object | 	order: ascending, descending	如果只指定了prop, 没有指定order, 则默认顺序是ascending
-empty-text | 空数据时显示的文本内容,也可以通过 slot="empty" 设置 | String	|	暂无数据
+header-row-style | 表头行的 style 的回调方法，也可以使用一个固定的 Object 为所有表头行设置一样的 Style。| Function({row, rowIndex})/Object | —
+header-cell-class-name | 表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。	| Function({row, column, rowIndex, columnIndex})/String | —
+header-cell-style | 表头单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有表头单元格设置一样的 Style。 |	Function({row, column, rowIndex, columnIndex})/Object |	—
+thtd-beyond-hiding | 开启头部th, 表体td超出隐藏  注意: 此属性必须是在use-virtual开启情况下才有效| Boolean | true
+default-sort | 默认的排序列的 prop 和顺序。它的prop属性指定默认的排序的列，order指定默认排序的顺序 | Object | order: ascending, descending	如果只指定了prop, 没有指定order, 则默认顺序是ascending
+empty-text | 空数据时显示的文本内容,也可以通过 slot="empty" 设置 | String	| 暂无数据
 no-data-height | 空数据空布局的高度,当你是自定义空数据布局，请给出你的空数据布局的高度 | String, Number | 60 （60是表格默认空数据布局的高度，也就是‘暂无数据’几个字的布局高度）
 
 # Table Events（表格的事件）
 
-事件名  |  说明  |  参数
+事件名  |  说明  |  参数
 :----------: | -------  |  :-------:
 @table-select-change | 整个表格Checkbox选中的row的id数组, 必须保证row（表格的行数据）存在id且唯一，没有ID可以自己造 （不懂问作者）  注意 : 1. 当@select或者@select-all事件触发，就会触发这个事件 （可以用来回显表格勾选状态） 2. 参数为 tableSelectData 当前表格（含分页）选中项id数组  4. 该事件触发方式 需要设置表格属性  record-table-select：true// 具体看表格属性 | tableSelectData
-@select-all	| 当用户手动勾选全选 Checkbox 时触发的事件 |	selection
+@select-all	| 当用户手动勾选全选 Checkbox 时触发的事件 | selection
 @select  | 当用户手动勾选数据行的 Checkbox 时触发的事件 |	selection, row
 @selection-change | 当选择项发生变化时会触发该事件 | selection
 @load-complete  | 当表格加载完成的事件回调 (当高度变化，数据变化，都会重新去计算表格，重新绘画表格，所以需要有些情况，想知道表格加载情况) |  plTable实例对象
 @row-dblclick | 当某一行被双击时会触发该事件 | row, column, event
-@cell-mouse-enter |	当单元格 hover 进入时会触发该事件	| row, column, cell, event
+@cell-mouse-enter | 当单元格 hover 进入时会触发该事件 | row, column, cell, event
 @cell-mouse-leave | 当单元格 hover 退出时会触发该事件 |	row, column, cell, event
 @cell-click	| 当某个单元格被点击时会触发该事件	| row, column, cell, event
 @cell-dblclick	| 当某个单元格被双击击时会触发该事件 | row, column, cell, event
@@ -77,7 +77,7 @@ no-data-height | 空数据空布局的高度,当你是自定义空数据布局�
 
 # Table Methods（表格的方法）
 
-方法名  |  说明  |  参数
+方法名  |  说明  |  参数
 :----------: | -------  |  :-------:
 toggleAllSelection  |  用于多选表格，切换所有行的选中状态  |  -
 clearSelection |  用于表格多选，清空用户的选择 | -
@@ -95,7 +95,7 @@ sort | 手动对 Table 进行排序。参数prop属性指定排序列，order指
 # Table-column Attributes
   **有关于pl-table-column更多配置具体请看element官方文档的table-column属性**
 
-属性  |  说明  |  类型  |  默认值
+属性  |  说明  |  类型  |  默认值
 :----------: | -------  |  :-------:  |  :-------:
 drop-action  |  开启掉落元素 （注：就是在表格列中多加一列,这一列你表面是看不见的，用来解决拖动表格引起的表格宽度变小问题，导致出现固定列，与表体分开。多加一列就是为了去自适应当表格拖动列宽小了，然后多加一列去填满剩余的宽度）不知道是啥意思不要紧，一般不会用，用法请看底部） |  boolean  |  false
 show-overflow-tooltip | 当内容过长被隐藏时显示 tooltip（文字提示框） | Boolean | false
@@ -107,11 +107,11 @@ header-align | 表头对齐方式，若不设置该项，则使用表格的对�
 # Pagination Attributes（分页属性）
   **有关于Pagination分页配置具体请看element官方文档的Pagination**
 
-属性  |  说明  |  类型  |  默认值
+属性  |  说明  |  类型  |  默认值
 :----------: | -------  |  :-------:  |  :-------:
 pagination-show | 是否需要分页器 | Boolean  | true
 pager-count | 页码按钮的数量，当总页数超过该值时会折叠 | Number  | 5
-page-sizes |	每页显示个数选择器的选项设置 | [number， number，number]  |	[10, 20, 30, 50]
+page-sizes |	每页显示个数选择器的选项设置 | [number， number，number]  | [10, 20, 30, 50]
 pt-total | 数据总条数 | Number | 0
 page-size | 每页条数 | Number | 10
 current-page | 当前页 | Number | 1
@@ -120,7 +120,7 @@ pagination-layout | 组件布局，子组件名用逗号分隔 | String | total,
 
 # Pagination Events（分页的事件）
 
-事件名  |  说明  |  参数
+事件名  |  说明  |  参数
 :----------: | -------  |  :-------:
 @handlePageSize | 获取当前分页的数据 | page,size
 
@@ -132,7 +132,7 @@ pagination-layout | 组件布局，子组件名用逗号分隔 | String | total,
 
 # Field Attributes（操作（显示字段）属性）
 
-属性  |  说明  |  类型  |  默认值
+属性  |  说明  |  类型  |  默认值
 :----------: | -------  |  :-------:  |  :-------:
 dialog-data | 选择显示字段数组 格式如下 [{ name: '我的', // 字段名 state: true, // 选择状态 disabled: true // 是否禁用 }] | Array  | []
 show-amend  | 是否显示修改字段名按钮 | Boolean | false
@@ -143,7 +143,7 @@ field-sort | 显示字段是否排序 |  Boolean | true
 
 # Field Events（操作（显示字段）的事件）
 
-事件名  |  说明  |  参数
+事件名  |  说明  |  参数
 :----------: | -------  |  :-------:
 @amend-field  | 修改单个字段按钮点击事件 |  row, index
 @show-field  | 获取当前的需要显示的字段 |  当前的字段数组
@@ -151,7 +151,7 @@ field-sort | 显示字段是否排序 |  Boolean | true
 
 # Field Methods（操作（显示字段）的方法）
 
-方法名  |  说明  |  参数
+方法名  |  说明  |  参数
 :----------: | -------  |  :-------:
 plDialogOpens | 打开弹窗 | -
 
