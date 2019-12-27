@@ -9,7 +9,7 @@
 
 > 注: pl-table 2.4.6起是个全新的版本，无需安装element，不在兼容element低版本（相当于pl-table指定了element版本），不需要element的包，请看文档，和下面的实例文件了解全新版本！
 
-> 注: 当前pl-table是element的2.12.0的表格api， 但是并不是代表你需要安装element 2.12.0， 上面说到了，不需要你安装，你只需要知道表格对应的是element的2.12.0的api  你自己还是可以去安装element其他版本，并且去使用ele其他组件。 pl-table现在跟element没关系了，是因为我难得去写表格的api，就让你们自己去看element对应版本的api   因为pl-table api跟el-table api基本一致！
+> 注: 当前pl-table是element的2.12.0的表格api， 但是并不是代表你需要安装element 2.12.0， 上面说到了，不需要你安装，你只需要知道表格对应的是element的2.12.0的api  你自己还是可以去安装element其他版本，并且去使用ele其他组件。 pl-table现在跟element没关系了，一定要看底部下面的pl-table APi
 
 > 注： 2.3.6 需要配置（需要配置的实例，请看底部）   2.4.6及以上不需要配置，目前来说这2.3.6和2.4.6及以上的版本是稳定版本
 
@@ -135,7 +135,7 @@
 
 # 当前版本BUG（等着下个版本修改）
  1. 使用big-data-checkbox属性时： 初次选择复选框选中后必须鼠标移出当前行才有状态变化，如果鼠标还在当前行停留的话复选框状态是不会变化的
-
+ 2. 使用big-data-checkbox属性时  clearSelection方法不可用
  # 2.3.6版本需要配置的实例（如果你不是用的2.3.6，就不需要看这个）
  # 报错(使用注意点, cdn方式请跳过)
   原因：内置组件采用JSX写法
