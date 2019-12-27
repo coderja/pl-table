@@ -11,6 +11,8 @@
 
 > 注: 当前pl-table是element的2.12.0的表格api， 但是并不是代表你需要安装element 2.12.0， 上面说到了，不需要你安装，你只需要知道表格对应的是element的2.12.0的api  你自己还是可以去安装element其他版本，并且去使用ele其他组件。 pl-table现在跟element没关系了，一定要看底部下面的pl-table APi
 
+> 注: 看表格实例效果代码去看element Table 表格效果代码，唯一不同的就是把el-table组件名改成pl-table, el-table-column改成pl-table-column, 然后对照pltable api进行开发吧!!
+
 > 注： 2.3.6 需要配置（需要配置的实例，请看底部）   2.4.6及以上不需要配置，目前来说这2.3.6和2.4.6及以上的版本是稳定版本
 
 > 注: 很多前端小伙伴再问，有了表格，那我怎么导出表格数据呢，来给你们个链接 https://github.com/livelyPeng/pl-export-excel
